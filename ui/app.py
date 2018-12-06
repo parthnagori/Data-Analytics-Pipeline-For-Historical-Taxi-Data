@@ -10,6 +10,11 @@ def get_lat_long(address="175 5th Avenue NYC"):
 	# Flatiron Building, 175, 5th Avenue, Flatiron, New York, NYC, New York, ...
 	return (location.latitude, location.longitude)
 
+def run_prediction(pickup_addr_latlong, dropoff_addr_latlong, passenger_count):
+	print("Running prediction from pickup: {} tp dropoff: {} for {} passengers".format(pickup_addr_latlong, dropoff_addr_latlong, passenger_count))
+	## call
+	return 10
+
 # App config.
 DEBUG = True
 app = Flask(__name__)
@@ -36,7 +41,7 @@ def run():
 			# Save the comment here.
 			pickup_addr_latlong = get_lat_long(pickup_addr)
 			dropoff_addr_latlong = get_lat_long(dropoff_addr)
-			flash("")
+			flash("Your fare would be ${}".format(run_prediction(pickup_addr_latlong, dropoff_addr_latlong, passenger_count)))
 		else:
 			print(dir(form.errors), form.errors)
 			missing_fields = []
